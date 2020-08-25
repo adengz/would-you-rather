@@ -1,5 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import LoadingBar from 'react-redux-loading-bar';
+import { handleInitialData } from '../actions/shared';
 
 export default function App() {
-  return <div>Hello World</div>;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleInitialData());
+  }, [dispatch]);
+
+  return (
+    <>
+      <LoadingBar />
+      <div>Hello World</div>
+    </>
+  );
 }

@@ -11,6 +11,6 @@ export const handleInitialData = () => {
     const questions = await API._getQuestions();
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
-    dispatch(hideLoading);
+    dispatch(hideLoading());
   };
 };
