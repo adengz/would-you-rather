@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 import { handleInitialData } from '../actions/shared';
 import Login from './Login';
+import QuestionList from './QuestionList';
 
 export default function App() {
   const dispatch = useDispatch();
+  const authed = useSelector(({ authedUser }) => authedUser !== null);
 
   useEffect(() => {
     dispatch(handleInitialData());
@@ -14,9 +16,7 @@ export default function App() {
   return (
     <>
       <LoadingBar />
-      <div className="container">
-        <Login />
-      </div>
+      <div className="container">{authed ? <QuestionList /> : <Login />}</div>
     </>
   );
 }
