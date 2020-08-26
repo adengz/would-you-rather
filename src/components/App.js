@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 import { handleInitialData } from '../actions/shared';
+import Login from './Login';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ export default function App() {
   return (
     <>
       <LoadingBar />
-      <div>Hello World</div>
+      <div className="container">
+        <Login />
+      </div>
     </>
   );
 }
