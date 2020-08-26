@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setAuthedUser } from '../actions/authedUser';
 import '../styles/card.scss';
 
 export default function Login() {
   const allUsers = useSelector(({ users }) => users);
   const [userId, setUserId] = useState('');
+  const dispatch = useDispatch();
 
   const handleSelectProfile = (e) => {
     setUserId(e.target.value);
+  };
+
+  const handleSignIn = () => {
+    dispatch(setAuthedUser(userId));
   };
 
   let avatar = <div className="avatar" />;
@@ -38,11 +44,7 @@ export default function Login() {
               );
             })}
           </select>
-          <button
-            type="submit"
-            onClick={() => console.log('sign in')}
-            disabled={userId === ''}
-          >
+          <button type="submit" onClick={handleSignIn} disabled={userId === ''}>
             Sign In
           </button>
         </div>
