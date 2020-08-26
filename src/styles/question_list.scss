@@ -1,0 +1,32 @@
+@import './colors';
+
+.list-frame {
+  border: 2px solid $border {
+    radius: 3px;
+  }
+
+  .tabs {
+    display: flex;
+    margin: 0;
+
+    li {
+      flex: 1;
+      padding: 10px;
+      font-size: large;
+      background-color: $background;
+      text: {
+        align: center;
+        transform: capitalize;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.active {
+        color: $primary;
+        background-color: $white;
+      }
+    }
+  }
+}

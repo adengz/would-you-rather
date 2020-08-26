@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import '../styles/question_list.scss';
 
 const tabs = ['unanswered', 'answered'];
 
