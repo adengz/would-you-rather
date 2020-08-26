@@ -4,6 +4,7 @@ import LoadingBar from 'react-redux-loading-bar';
 import { handleInitialData } from '../actions/shared';
 import Login from './Login';
 import QuestionList from './QuestionList';
+import Question from './Question';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function App() {
   return (
     <>
       <LoadingBar />
-      <div className="container">{authed ? <QuestionList /> : <Login />}</div>
+      <div className="container">{authed ? <Question id="loxhs1bqm25b708cmbf3g" /> : <Login />}</div>
     </>
   );
 }
