@@ -1,7 +1,7 @@
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import * as API from '../utils/_DATA';
-import { receiveUsers } from './users';
-import { receiveQuestions } from './questions';
+import { receiveUsers, addAnswerToUser } from './users';
+import { receiveQuestions, addAnswerToQuestion } from './questions';
 
 export const handleInitialData = () => {
   return async (dispatch) => {
@@ -11,6 +11,19 @@ export const handleInitialData = () => {
     const questions = await API._getQuestions();
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
+    dispatch(hideLoading());
+  };
+};
+
+export const handleAnswer = ({ qid, answer }) => {
+  return async (dispatch, getState) => {
+    const { authedUser } = getState();
+    const data = { authedUser, qid, answer };
+    dispatch(showLoading());
+
+    await API._saveQuestionAnswer(data);
+    dispatch(addAnswerToUser(data));
+    dispatch(addAnswerToQuestion(data));
     dispatch(hideLoading());
   };
 };
