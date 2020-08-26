@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import '../styles/card.scss';
 
 export default function Login() {
   const allUsers = useSelector(({ users }) => users);
@@ -24,11 +25,7 @@ export default function Login() {
         {avatar}
         <div className="detail">
           <p className="center">Please sign in to continue</p>
-          <select
-            className="dropdown"
-            value={userId}
-            onChange={handleSelectProfile}
-          >
+          <select value={userId} onChange={handleSelectProfile}>
             <option value="" disabled>
               Select Profile
             </option>
@@ -41,7 +38,13 @@ export default function Login() {
               );
             })}
           </select>
-          <button type="submit">Sign In</button>
+          <button
+            type="submit"
+            onClick={() => console.log('sign in')}
+            disabled={userId === ''}
+          >
+            Sign In
+          </button>
         </div>
       </div>
     </div>

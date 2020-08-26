@@ -1,6 +1,9 @@
+@import './colors';
+
 body {
   margin: 0;
   font-family: sans-serif;
+  color: $text;
 }
 
 .container {
@@ -11,4 +14,20 @@ body {
 
 .center {
   text-align: center;
+}
+
+button {
+  color: $white;
+  background-color: $primary;
+  border: 2px solid $primary {
+    radius: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+
+  &:hover:enabled {
+    cursor: pointer;
+  }
 }
