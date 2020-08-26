@@ -17,7 +17,7 @@ export default function App() {
   return (
     <>
       <LoadingBar />
-      <div className="container">{authed ? <Question id="loxhs1bqm25b708cmbf3g" /> : <Login />}</div>
+      <div className="container">{authed ? <QuestionList /> : <Login />}</div>
     </>
   );
 }

@@ -30,11 +30,11 @@ export default function QuestionList() {
           >{`${tab} questions`}</li>
         ))}
       </ul>
-      <ul className="list">
+      <div className="list">
         {filteredIds.map((id) => (
           <QuestionCard key={id} id={id} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
