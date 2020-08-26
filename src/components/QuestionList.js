@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import QuestionCard from './QuestionCard';
 import '../styles/question_list.scss';
 
 const tabs = ['unanswered', 'answered'];
@@ -29,9 +30,9 @@ export default function QuestionList() {
           >{`${tab} questions`}</li>
         ))}
       </ul>
-      <ul>
+      <ul className="list">
         {filteredIds.map((id) => (
-          <li key={id}>{id}</li>
+          <QuestionCard key={id} id={id} />
         ))}
       </ul>
     </div>

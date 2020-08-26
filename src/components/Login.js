@@ -30,7 +30,7 @@ export default function Login() {
       <div className="content">
         {avatar}
         <div className="detail">
-          <p className="center">Please sign in to continue</p>
+          <div className="center">Please sign in to continue</div>
           <select value={userId} onChange={handleSelectProfile}>
             <option value="" disabled>
               Select Profile

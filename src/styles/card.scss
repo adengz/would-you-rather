@@ -5,13 +5,14 @@
   flex-direction: column;
   width: 100%;
   min-height: 200px;
+  margin: 5px 0;
   border: 2px solid $border {
     radius: 5px;
   }
 
   .title {
     margin: 0;
-    padding: 5px;
+    padding: 10px;
     background-color: $background;
     border-bottom: 2px solid $border;
   }
@@ -33,6 +34,10 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 16px;
+
+      .bold {
+        font-weight: bold;
+      }
     }
   }
 }
