@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/card.scss';
 
+const previewLen = 30;
+
 export default function QuestionCard({ id }) {
   const {
     author,
@@ -22,7 +24,7 @@ export default function QuestionCard({ id }) {
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
         <div className="detail">
           <p className="bold">Would you rather</p>
-          <p>{`...${text}...`}</p>
+          <p>{`...${text.substr(0, previewLen)}...`}</p>
           <button type="submit" onClick={goToQuestion}>
             View Question
           </button>
