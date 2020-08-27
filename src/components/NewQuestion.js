@@ -21,8 +21,8 @@ export default function NewQuestion() {
     setTexts({ ...texts, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    dispatch(handleNewQuestion(getTrimmedTexts()));
+  const handleSubmit = async () => {
+    await dispatch(handleNewQuestion(getTrimmedTexts()));
     history.push('/');
   };
 
