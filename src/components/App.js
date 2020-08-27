@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 import { handleInitialData } from '../actions/shared';
+import Nav from './Nav';
 import Login from './Login';
 import QuestionList from './QuestionList';
 import Question from './Question';
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <>
       <LoadingBar />
+      {authed && <Nav />}
       <div className="container">
         {!authed ? (
           <Route path="/login" component={Login} />
