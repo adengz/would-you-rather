@@ -1,0 +1,39 @@
+@import './colors';
+@import './card.scss';
+@import './mixins';
+
+$badge-radius: 30px;
+
+.card-frame {
+  @extend .card;
+  min-height: 120px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score {
+  display: flex;
+  width: 20%;
+  align-self: stretch;
+  padding: 0 15px;
+  margin: 10px 0;
+  border-left: 2px solid $border;
+
+  .badge-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .badge {
+      @include round-badge($badge-radius);
+      font: {
+        size: x-large;
+        weight: bold;
+      }
+    }
+  }
+}

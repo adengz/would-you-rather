@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import UserCard from './UserCard';
 
 const getUserScore = (user) =>
   Object.keys(user.answers).length + user.questions.length;
@@ -12,10 +13,10 @@ export default function Leaderboard() {
   );
 
   return (
-    <ul className="list">
+    <div className="list">
       {sortedUserIds.map((id) => (
-        <li key={id}>{id}</li>
+        <UserCard key={id} id={id} />
       ))}
-    </ul>
+    </div>
   );
 }
