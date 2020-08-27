@@ -5,6 +5,7 @@ import { handleInitialData } from '../actions/shared';
 import Login from './Login';
 import QuestionList from './QuestionList';
 import Question from './Question';
+import NewQuestion from './NewQuestion';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export default function App() {
   return (
     <>
       <LoadingBar />
-      <div className="container">{authed ? <Question id="vthrdm985a262al8qx3do" /> : <Login />}</div>
+      <div className="container">{authed ? <NewQuestion /> : <Login />}</div>
     </>
   );
 }
