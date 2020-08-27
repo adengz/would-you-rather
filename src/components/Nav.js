@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation, NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
+import '../styles/nav.scss';
 
 const routes = {
   '/': 'Home',
@@ -37,11 +38,13 @@ const AuthPortal = () => {
 
   return (
     <div className="auth-portal">
-      <div>Hello, {name}</div>
-      <img src={avatarURL} alt={`${name}'s avatar`} />
-      <button type="submit" onClick={handleSignOut}>
-        Sign Out
-      </button>
+      <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
+      <div>
+        <div>{name}</div>
+        <button type="submit" onClick={handleSignOut}>
+          Sign Out
+        </button>
+      </div>
     </div>
   );
 };
