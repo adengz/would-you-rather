@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/card.scss';
 
@@ -8,6 +9,11 @@ export default function QuestionCard({ id }) {
     optionOne: { text },
   } = useSelector(({ questions }) => questions[id]);
   const { name, avatarURL } = useSelector(({ users }) => users[author]);
+  const history = useHistory();
+
+  const goToQuestion = () => {
+    history.push(`/questions/${id}`);
+  };
 
   return (
     <div className="card">
@@ -17,7 +23,7 @@ export default function QuestionCard({ id }) {
         <div className="detail">
           <p className="bold">Would you rather</p>
           <p>{`...${text}...`}</p>
-          <button type="submit" onClick={() => console.log(`go to ${id}`)}>
+          <button type="submit" onClick={goToQuestion}>
             View Question
           </button>
         </div>

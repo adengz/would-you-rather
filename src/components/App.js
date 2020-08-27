@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 import { handleInitialData } from '../actions/shared';
@@ -19,7 +20,18 @@ export default function App() {
   return (
     <>
       <LoadingBar />
-      <div className="container">{authed ? <Leaderboard /> : <Login />}</div>
+      <div className="container">
+        {!authed ? (
+          <Route path="/login" component={Login} />
+        ) : (
+          <Switch>
+            <Route path="/" exact component={QuestionList} />
+            <Route path="/questions/:id" component={Question} />
+            <Route path="/add" component={NewQuestion} />
+            <Route path="/leaderboard" component={Leaderboard} />
+          </Switch>
+        )}
+      </div>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { handleNewQuestion } from '../actions/shared';
 import '../styles/card.scss';
@@ -11,6 +12,7 @@ export default function NewQuestion() {
     Object.fromEntries(keys.map((k) => [k, '']))
   );
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleTypeInput = (e) => {
     setTexts({ ...texts, [e.target.name]: e.target.value });
@@ -18,7 +20,7 @@ export default function NewQuestion() {
 
   const handleSubmit = () => {
     dispatch(handleNewQuestion(texts));
-    // go home
+    history.push('/');
   };
 
   return (

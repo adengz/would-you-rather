@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 import '../styles/card.scss';
 
 export default function Login() {
+  const authed = useSelector(({ authedUser }) => authedUser !== null);
   const allUsers = useSelector(({ users }) => users);
   const [userId, setUserId] = useState('');
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  if (authed) {
+    return <Redirect to="/" />;
+  }
 
   const handleSelectProfile = (e) => {
     setUserId(e.target.value);
@@ -14,6 +21,7 @@ export default function Login() {
 
   const handleSignIn = () => {
     dispatch(setAuthedUser(userId));
+    history.push('/');
   };
 
   let avatar = <div className="avatar" />;
