@@ -35,7 +35,7 @@ export const handleAnswer = ({ qid, answer }) => {
 export const handleNewQuestion = ({ optionOneText, optionTwoText }) => {
   return async (dispatch, getState) => {
     const { authedUser } = getState();
-    const data = { authedUser, optionOneText, optionTwoText };
+    const data = { author: authedUser, optionOneText, optionTwoText };
     dispatch(showLoading());
 
     const question = await API._saveQuestion(data);
