@@ -6,6 +6,7 @@ import Login from './Login';
 import QuestionList from './QuestionList';
 import Question from './Question';
 import NewQuestion from './NewQuestion';
+import Leaderboard from './Leaderboard';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export default function App() {
   return (
     <>
       <LoadingBar />
-      <div className="container">{authed ? <NewQuestion /> : <Login />}</div>
+      <div className="container">{authed ? <Leaderboard /> : <Login />}</div>
     </>
   );
 }
