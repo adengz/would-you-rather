@@ -14,12 +14,15 @@ export default function NewQuestion() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const getTrimmedTexts = () =>
+    Object.fromEntries(Object.entries(texts).map(([k, v]) => [k, v.trim()]));
+
   const handleTypeInput = (e) => {
     setTexts({ ...texts, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
-    dispatch(handleNewQuestion(texts));
+    dispatch(handleNewQuestion(getTrimmedTexts()));
     history.push('/');
   };
 
@@ -49,7 +52,7 @@ export default function NewQuestion() {
         <button
           type="submit"
           onClick={handleSubmit}
-          disabled={Object.values(texts).includes('')}
+          disabled={Object.values(getTrimmedTexts()).includes('')}
         >
           Submit
         </button>
