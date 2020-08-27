@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { handleAnswer } from '../actions/shared';
-import '../styles/card.scss';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Result from './Result';
+import Vote from './Vote';
 
 export default function Question({ id }) {
   const props = useSelector(({ authedUser, users, questions }) => {
@@ -29,49 +29,3 @@ export default function Question({ id }) {
     <Vote {...props} />
   );
 }
-
-const Vote = ({ qid, name, avatarURL, options }) => {
-  const [answer, setAnswer] = useState('');
-  const dispatch = useDispatch();
-
-  const handleSubmitAnswer = () => {
-    dispatch(handleAnswer({ qid, answer }));
-  };
-
-  return (
-    <div className="card">
-      <h3 className="title">{`${name} asks`}</h3>
-      <div className="content">
-        <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
-        <div className="detail">
-          <p className="bold">Would you rather ...</p>
-          {Object.entries(options).map(([k, v]) => (
-            <p key={k}>
-              <label>
-                <input
-                  type="radio"
-                  name="option"
-                  value={k}
-                  checked={answer === k}
-                  onChange={() => setAnswer(k)}
-                />
-                {v.text}
-              </label>
-            </p>
-          ))}
-          <button
-            type="submit"
-            onClick={handleSubmitAnswer}
-            disabled={answer === ''}
-          >
-            Submit Answer and View Results
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Result = ({ name, avatarURL, options, answer }) => {
-  return <div>Result</div>;
-};
