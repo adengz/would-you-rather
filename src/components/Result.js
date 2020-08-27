@@ -24,9 +24,9 @@ export default function Result({ name, avatarURL, options, answer }) {
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
         <div className="detail">
           <p className="bold">Result</p>
-          <p>Vote Bar</p>
+          <VoteBar data={data} answer={answer} />
           {Object.entries(data).map(([k, v]) => (
-            <p key={k} className={`option${k === answer ? ' mine' : ''}`}>
+            <div key={k} className={`option${k === answer ? ' mine' : ''}`}>
               {v.votes} / {totalVotes} ({v.percent}%) would rather {v.text}
               {k === answer && (
                 <div className="badge">
@@ -35,10 +35,24 @@ export default function Result({ name, avatarURL, options, answer }) {
                   Choice
                 </div>
               )}
-            </p>
+            </div>
           ))}
         </div>
       </div>
     </div>
   );
 }
+
+const VoteBar = ({ data, answer }) => (
+  <div className="vote-bar">
+    {Object.entries(data).map(([k, v]) => (
+      <div
+        key={k}
+        className={`bar${k === answer ? ' mine' : ''}`}
+        style={{ width: `${v.percent}%` }}
+      >
+        {v.percent}%
+      </div>
+    ))}
+  </div>
+);
