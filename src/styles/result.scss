@@ -15,6 +15,7 @@ $badge-radius: 21px;
     justify-content: center;
     align-items: center;
     border-radius: inherit;
+    overflow: hidden;
 
     &.mine {
       color: $white;
