@@ -1,7 +1,5 @@
 @import './colors';
 
-$badge-radius: 21px;
-
 .card {
   display: flex;
   flex-direction: column;
@@ -37,38 +35,8 @@ $badge-radius: 21px;
       justify-content: space-between;
       padding: 16px;
 
-      p {
-        margin: 0 {
-          right: 5px;
-        }
-        padding: 10px 20px 10px 5px;
-
-        &.mine {
-          border: 2px solid $primary {
-            radius: 3px;
-          }
-          background-color: rgba($primary, 0.2);
-          position: relative;
-
-          .badge {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            width: 2 * $badge-radius;
-            height: 2 * $badge-radius;
-            border-radius: $badge-radius;
-            color: $white;
-            background-color: $primary;
-            font-size: x-small;
-            position: absolute;
-            top: -$badge-radius - 1;
-            right: -$badge-radius - 1;
-          }
-        }
-      }
-
       .bold {
+        margin-top: 0;
         font-weight: bold;
       }
     }

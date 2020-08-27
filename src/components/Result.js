@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/card.scss';
+import '../styles/result.scss';
 
 export default function Result({ name, avatarURL, options, answer }) {
   const totalVotes = Object.values(options)
@@ -25,7 +26,7 @@ export default function Result({ name, avatarURL, options, answer }) {
           <p className="bold">Result</p>
           <p>Vote Bar</p>
           {Object.entries(data).map(([k, v]) => (
-            <p key={k} className={k === answer ? 'mine' : null}>
+            <p key={k} className={`option${k === answer ? ' mine' : ''}`}>
               {v.votes} / {totalVotes} ({v.percent}%) would rather {v.text}
               {k === answer && (
                 <div className="badge">

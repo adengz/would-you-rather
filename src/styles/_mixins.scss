@@ -1,0 +1,13 @@
+@import './colors';
+
+@mixin round-badge($radius) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $white;
+  background-color: $primary;
+  width: 2 * $radius;
+  height: 2 * $radius;
+  border-radius: $radius;
+}
