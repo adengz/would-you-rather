@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { useLocation, Route, Redirect, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 import { handleInitialData } from '../actions/shared';
@@ -9,6 +9,22 @@ import QuestionList from './QuestionList';
 import Question from './Question';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
+
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  const location = useLocation();
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        authed ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: '/login', state: { from: location } }} />
+        )
+      }
+    />
+  );
+};
 
 export default function App() {
   const dispatch = useDispatch();
@@ -23,16 +39,26 @@ export default function App() {
       <LoadingBar />
       {authed && <Nav />}
       <div className="container">
-        {!authed ? (
+        <Switch>
           <Route path="/login" component={Login} />
-        ) : (
-          <Switch>
-            <Route path="/" exact component={QuestionList} />
-            <Route path="/questions/:id" component={Question} />
-            <Route path="/add" component={NewQuestion} />
-            <Route path="/leaderboard" component={Leaderboard} />
-          </Switch>
-        )}
+          <PrivateRoute
+            path="/"
+            exact
+            component={QuestionList}
+            authed={authed}
+          />
+          <PrivateRoute
+            path="/questions/:id"
+            component={Question}
+            authed={authed}
+          />
+          <PrivateRoute path="/add" component={NewQuestion} authed={authed} />
+          <PrivateRoute
+            path="/leaderboard"
+            component={Leaderboard}
+            authed={authed}
+          />
+        </Switch>
       </div>
     </>
   );

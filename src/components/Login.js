@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useLocation, useHistory, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 import '../styles/card.scss';
@@ -9,6 +9,7 @@ export default function Login() {
   const allUsers = useSelector(({ users }) => users);
   const [userId, setUserId] = useState('');
   const dispatch = useDispatch();
+  const location = useLocation();
   const history = useHistory();
 
   if (authed) {
@@ -21,7 +22,8 @@ export default function Login() {
 
   const handleSignIn = () => {
     dispatch(setAuthedUser(userId));
-    history.push('/');
+    const { from } = location.state || { from: { pathname: '/' } };
+    history.replace(from);
   };
 
   let avatar = <div className="avatar" />;
