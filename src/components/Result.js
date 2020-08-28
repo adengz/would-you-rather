@@ -13,7 +13,7 @@ export default function Result({ name, avatarURL, options, answer }) {
     data[k] = {
       text,
       votes: length,
-      percent: (length / totalVotes) * 100,
+      percent: Math.round((length / totalVotes) * 100),
     };
   });
 
