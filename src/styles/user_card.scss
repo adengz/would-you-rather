@@ -22,18 +22,12 @@ $badge-radius: 30px;
   margin: 10px 0;
   border-left: 2px solid $border;
 
-  .badge-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .badge {
-      @include round-badge($badge-radius);
-      font: {
-        size: x-large;
-        weight: bold;
-      }
+  .badge {
+    @include round-badge($badge-radius);
+    font: {
+      size: x-large;
+      weight: bold;
     }
   }
+  
 }

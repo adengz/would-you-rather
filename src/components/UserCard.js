@@ -28,7 +28,7 @@ export default function UserCard({ id }) {
         <div className="score">
           <div className="card-frame">
             <h4 className="title center">Score</h4>
-            <div className="badge-container">
+            <div className="centered-box">
               <div className="badge">{score}</div>
             </div>
           </div>

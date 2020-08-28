@@ -23,6 +23,13 @@ body {
   padding: 5px;
 }
 
+.centered-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button {
   color: $white;
   background-color: $primary;

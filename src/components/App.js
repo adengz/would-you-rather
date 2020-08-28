@@ -9,6 +9,7 @@ import QuestionList from './QuestionList';
 import Question from './Question';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
+import NotFound from './NotFound';
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   const location = useLocation();
@@ -58,6 +59,7 @@ export default function App() {
             component={Leaderboard}
             authed={authed}
           />
+          <PrivateRoute path="*" component={NotFound} authed={authed} />
         </Switch>
       </div>
     </>

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Result from './Result';
 import Vote from './Vote';
+import NotFound from './NotFound';
 
 export default function Question() {
   const { id } = useParams();
@@ -24,6 +25,10 @@ export default function Question() {
     };
   });
   const { notFound, answer } = props;
+
+  if (notFound) {
+    return <NotFound />;
+  }
 
   return typeof answer !== 'undefined' ? (
     <Result {...props} />
