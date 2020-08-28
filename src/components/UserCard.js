@@ -14,7 +14,7 @@ export default function UserCard({ id }) {
       <div className="content">
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
         <div className="detail">
-          <p className="bold">{name}</p>
+          <h3 className="top">{name}</h3>
           <div className="stats">
             <span>Answered questions</span>
             <span>{answered}</span>

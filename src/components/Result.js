@@ -23,7 +23,7 @@ export default function Result({ name, avatarURL, options, answer }) {
       <div className="content">
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
         <div className="detail">
-          <p className="bold">Result</p>
+          <h3 className="top">Result</h3>
           <VoteBar data={data} answer={answer} />
           {Object.entries(data).map(([k, v]) => (
             <div key={k} className={`option${k === answer ? ' mine' : ''}`}>

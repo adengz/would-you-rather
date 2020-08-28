@@ -17,7 +17,7 @@ export default function Vote({ qid, name, avatarURL, options }) {
       <div className="content">
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
         <div className="detail">
-          <p className="bold">Would you rather ...</p>
+          <h3 className="top">Would you rather ...</h3>
           {Object.entries(options).map(([k, v]) => (
             <p key={k}>
               <label>

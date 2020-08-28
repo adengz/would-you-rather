@@ -23,7 +23,7 @@ export default function QuestionCard({ id }) {
       <div className="content">
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
         <div className="detail">
-          <p className="bold">Would you rather</p>
+          <p className="top bold">Would you rather</p>
           <p>{`...${text.substr(0, previewLen)}...`}</p>
           <button type="submit" onClick={goToQuestion}>
             View Question

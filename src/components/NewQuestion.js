@@ -30,8 +30,8 @@ export default function NewQuestion() {
     <div className="card">
       <h3 className="title center">Create New Question</h3>
       <div className="detail">
-        <p>Complete the question:</p>
-        <div className="bold">Would you rather ...</div>
+        <p className="top">Complete the question:</p>
+        <span className="bold">Would you rather ...</span>
         {keys
           .map((key) => (
             <input
