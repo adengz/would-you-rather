@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, Route, Redirect, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
@@ -28,12 +28,22 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
 };
 
 export default function App() {
+  const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const authed = useSelector(({ authedUser }) => authedUser !== null);
 
   useEffect(() => {
-    dispatch(handleInitialData());
+    const loadData = async () => {
+      await dispatch(handleInitialData());
+      setLoaded(true);
+    };
+
+    loadData();
   }, [dispatch]);
+
+  if (!loaded) {
+    return <LoadingBar />;
+  }
 
   return (
     <>
